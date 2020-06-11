@@ -2,11 +2,20 @@
 
 <div class="ui main text container segment">
     <div class="ui huge header">New Blog Post</div>
-    <form action="/blogs" method="POST">
-        <input type="text" name="blog[title]" placeholder="blog title">
-        <input type="text" name="blog[image]" placeholder="image url">
-        <input type="text" name="blog[body]" placeholder="blog post">
-        <button>Post</button>
+    <form class="ui form" action="/blogs" method="POST">
+        <div class="field">
+            <label for="title">Title</label>
+            <input id="title" type="text" name="blog[title]" placeholder="blog title">
+        </div>
+        <div class="field">
+            <label for="imgurl">Image</label>
+            <input id="imgurl" type="text" name="blog[image]" placeholder="image url">
+        </div>
+        <div class="field">
+            <label for="blogContent">Blog Post</label>
+            <textarea id="blogContent" name="blog[body]"></textarea>
+        </div>
+        <button class="ui pink basic button">Post</button>
     </form>
 </div>
 
