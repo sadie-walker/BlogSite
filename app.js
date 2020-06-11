@@ -23,9 +23,12 @@ const blogSchema = new mongoose.Schema({
 const Blog = mongoose.model("Blog", blogSchema); 
 
 //Restful Routes
+
 app.get("/", function(req, res){
     res.redirect("/blogs");
 })
+
+//index route
 app.get("/blogs", function(req,res){
     Blog.find({}, function(err, blogs){
         if(err)
@@ -37,6 +40,12 @@ app.get("/blogs", function(req,res){
     })
 })
 
+//new route
+app.get("/blogs/new", function(req,res){
+    res.render("new");
+})
+
+//server config
 app.listen(port,function(){
     console.log("server is listening");
 })
