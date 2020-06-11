@@ -56,6 +56,17 @@ app.post("/blogs", function(req,res){
     })  
 })
 
+//show route
+app.get("/blogs/:id", function(req,res){
+    Blog.findById(req.params.id, function(err, rtrnBlog){
+        if(err){
+            console.log(err);
+        } else{
+            res.render("show", {blog: rtrnBlog});
+        }
+    })
+})
+
 //server config
 app.listen(port,function(){
     console.log("server is listening");
