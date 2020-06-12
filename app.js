@@ -79,6 +79,17 @@ app.get("/blogs/:id/edit", function(req,res){
     })
 })
 
+//update route
+app.put("/blogs/:id", function(req,res){
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, editedBlog){
+        if(err){
+            console.log(err);
+        } else{
+            res.redirect("/blogs/" + req.params.id);
+        }
+    })
+})
+
 //server config
 app.listen(port,function(){
     console.log("server is listening");
