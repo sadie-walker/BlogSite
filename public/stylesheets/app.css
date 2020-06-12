@@ -5,3 +5,12 @@ i.icon{
 .container.main{
     margin-top: 6em;
 }
+
+.deleteForm{
+    display: inline;
+
+}
+
+.extra{
+    text-align: right;
+}
