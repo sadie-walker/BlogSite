@@ -90,6 +90,17 @@ app.put("/blogs/:id", function(req,res){
     })
 })
 
+//destroy route
+app.delete("/blogs/:id", function(req,res){
+    Blog.findByIdAndDelete(req.params.id, function(err, dltBlog){
+        if(err){
+            console.log(err);
+        } else {
+            res.redirect("/blogs");
+        }
+    })
+})
+
 //server config
 app.listen(port,function(){
     console.log("server is listening");
