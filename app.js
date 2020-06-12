@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const methodOverride = require("method-override");
 
 const app = express();
 const port = process.env.PORT || 3000; 
@@ -9,7 +10,7 @@ const port = process.env.PORT || 3000;
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
-
+app.use(methodOverride("_method"));
 mongoose.connect("mongodb://localhost/blogs");
 
 //Mongoose Model Config
