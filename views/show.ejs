@@ -3,18 +3,24 @@
     <div class="ui huge header"><%=blog.title%></div>
     <div class="ui top attached">
         <div class="item">
+            <div class="image">
             <img class="ui centered rounded image" src="<%=blog.image%>">
+            </div>
+            <div class="content">
+                <div class="meta">
+                    <span><%=blog.dateCreated.toDateString()%></span>
+                </div>
+                <div class="description">
+                    <p><%-blog.body%></p>
+                </div>
+            </div>
+            <div class="extra">
+                <a class="ui button green basic" href="/blogs/<%= blog._id %>/edit">Edit</a>
+                <form class="deleteForm" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+                    <button class="ui button blue basic">Delete</button>
+                </form>
+            </div>
         </div>
-        <div class="content">
-            <caption><%=blog.dateCreated.toDateString()%></caption>
-        </div>
-        <div class="description">
-            <p><%-blog.body%></p>
-        </div>
-        <a class="ui button green basic" href="/blogs/<%= blog._id %>/edit">Edit</a>
-        <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
-            <button class="ui button blue basic">Delete</button>
-        </form>
     </div>
 </div>
 <%- include("partials/footer")%>

@@ -1,20 +1,36 @@
 <%- include("partials/header") %>
-
-<h1>Blogs</h1>
-
-<% blogs.forEach(function(blog){ %>
-    <h3><%= blog.title %></h3>
-    <img src="<%= blog.image %>">
-    <% if(blog.body && blog.body.length > 0) { %>   
-        <p><%=blog.body.substring(0,100)%></p>
-    <% } %>
-    <caption><%= blog.dateCreated %></caption>
-    <a class="button ui pink basic" href="/blogs/<%= blog._id %>">Read More</a>
-    <a class="ui button green basic" href="/blogs/<%= blog._id %>/edit">Edit</a>
-    <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
-        <button class="ui button blue basic">Delete</button>
-    </form>
-<% }) %>
-
+<div class="ui main text container">
+    <div class="ui huge header">Blogs</div>
+    <div class="ui top attached segment">
+        <div class="ui divided items">
+            <% blogs.forEach(function(blog){ %>
+                <div class="item">
+                    <div class="image">
+                        <img src="<%= blog.image %>">
+                    </div>
+                    <div class="content">
+                        <a href="blogs/<%= blog._id %>"><%= blog.title %></a>
+                        <a class="header"></a>
+                        <div class="meta">
+                            <span><%= blog.dateCreated.toDateString() %></span>
+                        </div>
+                        <div class="description">
+                            <% if(blog.body && blog.body.length > 0) { %>   
+                                <p><%-blog.body.substring(0,100)%></p>
+                            <% } %>
+                        </div>
+                        <div class="extra">
+                            <a class="button ui pink basic" href="/blogs/<%= blog._id %>">Read More</a>
+                            <a class="ui button green basic" href="/blogs/<%= blog._id %>/edit">Edit</a>
+                            <form class="deleteForm" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+                                <button class="ui button blue basic">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
 
 <%- include("partials/footer") %>
