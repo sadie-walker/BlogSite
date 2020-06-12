@@ -1,14 +1,16 @@
-<%- include("partials/header")%>
+<%- include("partials/header") %>
 
 <h1>Blogs</h1>
 
 <% blogs.forEach(function(blog){ %>
-    <h3><%=blog.title%></h3>
-    <img src="<%=blog.image%>">
-    <p><%=blog.body%></p>
-    <caption><%=blog.dateCreated%></caption>
-    <a class="button ui pink basic" href="/blogs/<%=blog._id%>">Read More</a>
+    <h3><%= blog.title %></h3>
+    <img src="<%= blog.image %>">
+    <% if(blog.body && blog.body.length > 0) { %>   
+        <p><%=blog.body.substring(0,100)%></p>
+    <% } %>
+    <caption><%= blog.dateCreated %></caption>
+    <a class="button ui pink basic" href="/blogs/<%= blog._id %>">Read More</a>
 <% }) %>
 
 
-<%- include("partials/footer")%>
+<%- include("partials/footer") %>
