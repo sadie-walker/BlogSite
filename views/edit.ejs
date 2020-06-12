@@ -1,3 +1,20 @@
-<%- include("/partials/header") %>
-
-<%- include("/partials/footer") %>
+<%- include("partials/header") %>
+<div class="ui main text container segment">
+    <div class="ui huge header">Blog Post Editor</div>
+    <form class="ui form" action="/blogs" method="POST">
+        <div class="field">
+            <label for="title">Title</label>
+            <input id="title" type="text" name="blog[title]" value="<%= blog.title %>">
+        </div>
+        <div class="field">
+            <label for="imgurl">Image</label>
+            <input id="imgurl" type="text" name="blog[image]" value="<%= blog.image %>">
+        </div>
+        <div class="field">
+            <label for="blogContent">Blog Post</label>
+            <textarea id="blogContent" name="blog[body]"><%= blog.body %></textarea>
+        </div>
+        <button class="ui pink basic button">Post</button>
+    </form>
+</div>
+<%- include("partials/footer") %>
